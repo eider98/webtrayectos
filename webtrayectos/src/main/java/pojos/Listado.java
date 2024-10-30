@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Listado {
-	private static final String url = "jdbc:sqlite:C:\\Users\\HTML\\Eider\\java\\bdd\\trayectosbbd.db";
+	private static final String url = "jdbc:sqlite:C:\\Users\\HTML\\Eider\\java\\proyecto-trayectos\\webtrayectos\\bd\\trayectosbbd.db";
 	private static final String user = "";
 	private static final String pass = "";
 
