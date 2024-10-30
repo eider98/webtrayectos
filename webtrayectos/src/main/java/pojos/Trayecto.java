@@ -8,17 +8,19 @@ public class Trayecto {
 	private LocalDateTime salida;
 	private LocalDateTime llegada;
 	private String ruta;
+	private String direccion;
 	
 	//CONSTRUCTORES
-	public Trayecto(Long id, String salida, String llegada, String ruta) {
+	public Trayecto(Long id, String salida, String llegada, String ruta, String direccion) {
 		this.id = id;
 		this.salida = LocalDateTime.parse(salida);
 		this.llegada = LocalDateTime.parse(llegada);
 		this.ruta = ruta;
+		this.direccion = direccion;
 	}
 	
-	public Trayecto(String salida, String llegada, String ruta) {
-		this(null, salida, llegada, ruta);
+	public Trayecto(String salida, String llegada, String ruta, String direccion) {
+		this(null, salida, llegada, ruta, direccion);
 	}
 	
 	//GETTERS Y SETTERS
@@ -57,7 +59,10 @@ public class Trayecto {
 
 	@Override
 	public String toString() {
-		return "Trayecto [id=" + id + ", salida=" + salida + ", llegada=" + llegada + ", ruta=" + ruta + "]";
+		return "Trayecto [id=" + id + ", salida=" + salida + ", llegada=" + llegada + ", ruta=" + ruta + ", direccion="
+				+ direccion + "]";
 	}
+
+	
 	
 }

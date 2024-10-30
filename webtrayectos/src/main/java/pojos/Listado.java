@@ -30,9 +30,8 @@ public class Listado {
 				trayectos.clear();
 				
 				while (rs.next()) {
-					trayecto = new Trayecto(rs.getLong("id"), rs.getString("salida"),rs.getString("llegada"),rs.getString("ruta"));
+					trayecto = new Trayecto(rs.getLong("id"), rs.getString("salida"),rs.getString("llegada"),rs.getString("ruta"),rs.getString("direccion"));
 					trayectos.add(trayecto);
-					System.out.println(trayecto);
 				}
 				return trayectos;
 				
