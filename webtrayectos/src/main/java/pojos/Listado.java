@@ -30,8 +30,9 @@ public class Listado {
 				trayectos.clear();
 				
 				while (rs.next()) {
-					trayecto = new Trayecto(rs.getLong("id"), rs.getString("salida"),rs.getString("llegada"),rs.getString("ruta"),rs.getString("direccion"));
+					trayecto = new Trayecto(rs.getLong("id"), rs.getString("salida"),rs.getString("llegada"),rs.getString("ruta"),rs.getString("direccion"),rs.getString("duration"),rs.getString("observaciones"));
 					trayectos.add(trayecto);
+
 				}
 				return trayectos;
 				
@@ -45,6 +46,27 @@ public class Listado {
 			this.trayectos = trayectos;
 		}
 		
-	
+		//METODOS
+		public Trayecto meterTrayecto(Trayecto trayecto) {
+			String sql = String.format("INSERT INTO trayectos (salida, llegada, ruta, direccion, duration, observaciones) VALUES ('%s', '%s', '%s','%s', '%s','%s')", trayecto.getSalida(),
+					trayecto.getLlegada(),trayecto.getRuta(),trayecto.getDireccion(),trayecto.getDuration(), trayecto.getObservaciones());
+			
+			try (Connection con = DriverManager.getConnection(url, user, pass); Statement st = con.createStatement()) {
+				st.executeUpdate(sql);
+				return trayecto;
+			} catch (SQLException e) {
+				throw new RuntimeException("Ha fallado la consulta", e);
+			}
+		}
+		
+		public void eliminarTrayecto(Long id) {
+			String sql = String.format("DELETE FROM trayectos WHERE id='%s'", id);
+
+			try (Connection con = DriverManager.getConnection(url, user, pass); Statement st = con.createStatement()) {
+				st.executeUpdate(sql);
+			} catch (SQLException e) {
+				throw new RuntimeException("Ha fallado la consulta", e);
+			}
+		}
 	
 }

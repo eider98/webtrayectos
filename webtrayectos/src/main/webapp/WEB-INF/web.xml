@@ -19,4 +19,24 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>listadoServlet</display-name>
+    <servlet-name>listadoServlet</servlet-name>
+    <servlet-class>controladores.listadoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>listadoServlet</servlet-name>
+    <url-pattern>/listadoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BorrarServlet</display-name>
+    <servlet-name>BorrarServlet</servlet-name>
+    <servlet-class>controladores.BorrarServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BorrarServlet</servlet-name>
+    <url-pattern>/BorrarServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
