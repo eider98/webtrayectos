@@ -50,11 +50,16 @@ public class Listado {
 		
 		//METODOS
 		public Trayecto meterTrayecto(Trayecto trayecto) {
-			String sql = String.format("INSERT INTO trayectos (salida, llegada, ruta, direccion, duration, observaciones) VALUES ('%s', '%s', '%s','%s', '%s','%s')", trayecto.getSalida(),
-					trayecto.getLlegada(),trayecto.getRuta(),trayecto.getDireccion(),trayecto.getDuration(), trayecto.getObservaciones());
+			String sql = "INSERT INTO trayectos (salida, llegada, ruta, direccion, duration, observaciones) VALUES (?, ?, ?,?,?,?)";
 			
-			try (Connection con = DriverManager.getConnection(url, user, pass); Statement st = con.createStatement()) {
-				st.executeUpdate(sql);
+			try (Connection con = DriverManager.getConnection(url, user, pass); PreparedStatement pst = con.prepareStatement(sql)) {
+				pst.setString(1,trayecto.getSalida().toString());
+				pst.setString(2,trayecto.getLlegada().toString());
+				pst.setString(3, trayecto.getRuta());
+				pst.setString(4, trayecto.getDireccion());
+				pst.setString(5, trayecto.getDuration());
+				pst.setString(6, trayecto.getObservaciones());
+				pst.executeUpdate();
 				return trayecto;
 			} catch (SQLException e) {
 				throw new RuntimeException("Ha fallado la consulta", e);
