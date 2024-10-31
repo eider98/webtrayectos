@@ -2,6 +2,7 @@ package pojos;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Listado {
 	private static final String url = "jdbc:sqlite:C:\\Users\\HTML\\Eider\\java\\proyecto-trayectos\\webtrayectos\\bd\\trayectosbbd.db";
@@ -34,6 +35,7 @@ public class Listado {
 					trayectos.add(trayecto);
 
 				}
+				Collections.reverse(trayectos); //Darle la vuelta para que los más nuevos salgan primero por defecto
 				return trayectos;
 				
 			} catch (SQLException e) {
